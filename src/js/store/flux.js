@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: "",
 			demo: [
 				{
 					title: "FIRST",
@@ -37,6 +38,69 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			sign_up: async (email, name, last_name, id_document, password) => {
+				let response = await fetch("http://192.168.0.13:3000/sign-up", {
+					method: "POST",
+					body: JSON.stringify({
+						email,
+						name,
+						last_name,
+						id_document,
+						phone,
+						password
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				});
+				if (response.ok) {
+					await response.json();
+					setStore({
+						email,
+						name,
+						last_name
+					});
+					return true;
+				}
+				return false;
+			},
+			log_in: async (email, password) => {
+				let response = await fetch("http://192.168.0.13:3000/log-in", {
+					method: "POST",
+					body: JSON.stringify({
+						email,
+						password
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				});
+				if (response.ok) {
+					let body = await response.json();
+					setStore({
+						token: body.token,
+						user: body.user
+					});
+					localStorage.setItem("token", body.token);
+					localStorage.setItem("user", JSON.stringify(body.user));
+					return true;
+				}
+				return false;
+			},
+			log_out: () => {
+				setStore({
+					token: "",
+					user: null
+				});
+				localStorage.removeItem("token");
+				localStorage.removeItem("user");
+			},
+			setToken: (token, user) => {
+				setStore({
+					token,
+					user: JSON.parse(user)
+				});
 			}
 		}
 	};
