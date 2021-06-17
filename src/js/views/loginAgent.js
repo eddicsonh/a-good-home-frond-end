@@ -2,9 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export const Login = () => {
-	const { email, setEmail } = useState("");
-	const { password, setPassword } = useState("");
+export const LoginAgent = () => {
+	const history = useHistory();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	return (
 		<div className="container">
@@ -29,6 +30,18 @@ export const Login = () => {
 								onChange={e => setPassword(e.target.value)}
 							/>
 						</div>
+						<button
+							className="btn btn-primary my-4"
+							onClick={async e => {
+								let result = await actions.log_in(email, password);
+								if (result) {
+									history.push("/demo");
+								} else {
+									alert("credenciales malas...");
+								}
+							}}>
+							Log in
+						</button>
 					</form>
 				</div>
 			</div>

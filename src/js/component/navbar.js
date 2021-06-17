@@ -6,19 +6,50 @@ export const Navbar = () => {
 	const history = useHistory();
 
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<span className="navbar-brand mb-0 h1">A GOOD HOME</span>
 			</Link>
 			<div className="ml-auto">
-				<a className="nav-link">
-					<button className="btn btn-primary mr-1" onClick={e => history.push("/login")}>
-						log-in
+				<div className="btn-group mr-4">
+					<button
+						className="btn btn-secondary dropdown-toggle"
+						type="button"
+						id="dropdownMenuUser"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false">
+						user
 					</button>
-					<button className="btn btn-primary " onClick={e => history.push("/demo")}>
-						sign-up
+					<div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
+						<a className="dropdown-item" onClick={e => history.push("/colocar-login-usuario")}>
+							log-in
+						</a>
+						<a className="dropdown-item" onClick={e => history.push("/colocar-singup-usuario")}>
+							sign-up
+						</a>
+					</div>
+				</div>
+
+				<div className="btn-group mr-4">
+					<button
+						className="btn btn-secondary dropdown-toggle"
+						type="button"
+						id="dropdownMenuAgent"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false">
+						agent
 					</button>
-				</a>
+					<div className="dropdown-menu" aria-labelledby="dropdownMenuAgent">
+						<a className="dropdown-item" onClick={e => history.push("/login/agent")}>
+							log-in
+						</a>
+						<a className="dropdown-item" onClick={e => history.push("/signup/agente")}>
+							sign-up
+						</a>
+					</div>
+				</div>
 			</div>
 		</nav>
 	);
