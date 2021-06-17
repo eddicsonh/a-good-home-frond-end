@@ -43,18 +43,18 @@ export const Home = () => {
 				}}>
 				Log in
 			</button>
-			<button
-			className="btn btn-primary my-4"
-			onClick={async e =>{
-				let result = await actions.sign_up(email, name, last_name, id_document, password);
-				if (result) {
-					history.push("/sign-up");
-				} else {
-					alert("Oh no!")
-				}
-			}}>
+			{/* <button
+				className="btn btn-primary my-4"
+				onClick={async e => {
+					let result = await actions.sign_up(email, name, last_name, id_document, password);
+					if (result) {
+						history.push("/sign-up");
+					} else {
+						alert("Oh no!");
+					}
+				}}>
 				Sign up
-			</button>
+			</button> */}
 		</div>
 	);
 };
