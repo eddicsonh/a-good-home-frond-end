@@ -7,6 +7,8 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { LoginAgent } from "./views/loginAgent";
 import { SignUpAgent } from "./views/signUpAgent";
+import { SignUpUser } from "./views/signUpUser";
+import { LoginUser } from "./views/loginUser";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -29,6 +31,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/signup/agente">
 							<SignUpAgent />
+						</Route>
+						<Route exact path="/signup/user">
+							<SignUpUser />
+						</Route>
+						<Route exact path="/login/user">
+							<LoginUser />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

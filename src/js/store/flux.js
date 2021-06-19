@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			sign_up_user: async (email, name, last_name, id_document, password) => {
+			sign_up_user: async (email, name, last_name, id_document, phone, password) => {
 				let response = await fetch("http://192.168.0.13:3000/sign-up", {
 					method: "POST",
 					body: JSON.stringify({
@@ -55,11 +55,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				if (response.ok) {
-					await response.json();
+					response = await response.json();
 					setStore({
-						email,
-						name,
-						last_name
+						id: response.id,
+						email: response.email,
+						name: response.name,
+						last_name: response.last_name
 					});
 					return true;
 				}

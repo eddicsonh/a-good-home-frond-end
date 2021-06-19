@@ -60,7 +60,7 @@ export const SignUpAgent = () => {
 								onChange={e => setPassword(e.target.value)}
 							/>
 						</div>
-						<button className="btn btn-primary my-4">Log in</button>
+						<button className="btn btn-primary my-4">Sign up</button>
 					</form>
 				</div>
 			</div>

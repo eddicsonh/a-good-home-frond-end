@@ -22,10 +22,10 @@ export const Navbar = () => {
 						user
 					</button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
-						<a className="dropdown-item" onClick={e => history.push("/colocar-login-usuario")}>
+						<a className="dropdown-item" onClick={e => history.push("/login/user")}>
 							log-in
 						</a>
-						<a className="dropdown-item" onClick={e => history.push("/colocar-singup-usuario")}>
+						<a className="dropdown-item" onClick={e => history.push("/signup/user")}>
 							sign-up
 						</a>
 					</div>
