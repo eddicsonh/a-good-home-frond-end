@@ -15,7 +15,7 @@ export const Home = () => {
 			<p>
 				<img src={rigoImage} />
 			</p>
-			<div className="row justify-content-center mt-3">
+			{/* <div className="row justify-content-center mt-3">
 				<div className="col-4 d-flex flex-column justify-content-center">
 					<input
 						type="input"
@@ -42,7 +42,7 @@ export const Home = () => {
 					}
 				}}>
 				Log in
-			</button>
+			</button> */}
 			{/* <button
 				className="btn btn-primary my-4"
 				onClick={async e => {

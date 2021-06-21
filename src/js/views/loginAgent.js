@@ -1,8 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const LoginAgent = () => {
+	const { store, actions } = useContext(Context);
 	const history = useHistory();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -31,9 +33,10 @@ export const LoginAgent = () => {
 							/>
 						</div>
 						<button
+							type="button"
 							className="btn btn-primary my-4"
 							onClick={async e => {
-								let result = await actions.log_in(email, password);
+								let result = await actions.log_in_agent(email, password);
 								if (result) {
 									history.push("/demo");
 								} else {

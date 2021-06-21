@@ -44,6 +44,9 @@ const Layout = () => {
 						<Route exact path="/login/agent">
 							<LoginAgent />
 						</Route>
+						<Route exact path="/demo">
+							<Demo />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

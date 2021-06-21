@@ -40,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			sign_up_user: async (email, name, last_name, id_document, phone, password) => {
-				let response = await fetch("http://192.168.0.13:3000/sign-up", {
+				let response = await fetch("http://192.168.0.3:3000/sign-up", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -67,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return false;
 			},
 			log_in: async (email, password) => {
-				let response = await fetch("http://192.168.0.13:3000/log-in", {
+				let response = await fetch("http://192.168.0.3:3000/log-in", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -103,19 +103,70 @@ const getState = ({ getStore, getActions, setStore }) => {
 					user: JSON.parse(user)
 				});
 			},
-			sign_up: async (name, last_name, phone, email, password) => {
-				let response = await fetch("http://localhost:3000/sign-up", {
+			sign_up_agent: async (email, password, name, last_name, phone, description) => {
+				let response = await fetch("http://192.168.0.3:3000/signup/agent", {
 					method: "POST",
 					body: JSON.stringify({
+						email,
+						password,
 						name,
 						last_name,
 						phone,
-						email,
-						password
+						description
 					}),
 					headers: {
 						"Content-Type": "application/json"
 					}
+				});
+
+				if (response.ok) {
+					response = await response.json();
+					setStore({
+						email: response.email,
+						name: response.name,
+						last_name: response.last_name,
+						phone: response.phone,
+						description: response.description
+					});
+					return true;
+				}
+				return false;
+			},
+			log_in_agent: async (email, password) => {
+				let response = await fetch("http://192.168.0.3:3000/log-in/agent", {
+					method: "POST",
+					body: JSON.stringify({
+						email,
+						password
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				});
+				if (response.ok) {
+					let body = await response.json();
+					setStore({
+						token_agent: body.token_agent,
+						agent: body.agent
+					});
+					localStorage.setItem("token_agent", body.token_agent);
+					localStorage.setItem("agent", JSON.stringify(body.agent));
+					return true;
+				}
+				return false;
+			},
+			log_out_agent: () => {
+				setStore({
+					token_agent: "",
+					agent: null
+				});
+				localStorage.removeItem("token_agent");
+				localStorage.removeItem("agent");
+			},
+			setToken_agent: (token_agent, agent) => {
+				setStore({
+					token_agent,
+					agent: JSON.parse(agent)
 				});
 			}
 		}

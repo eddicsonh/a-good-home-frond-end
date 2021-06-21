@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const SignUpAgent = () => {
+	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	const [names, setNames] = useState("");
+	const [name, setName] = useState("");
 	const [last_name, setLast_name] = useState("");
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [description, setDescription] = useState("");
 
 	return (
 		<div className="container">
@@ -16,16 +19,16 @@ export const SignUpAgent = () => {
 				<div className="col-4 d-flex flex-column justify-content-center">
 					<form>
 						<div className="form-group">
-							<label htmlFor="inputEmail">Nombre:</label>
+							<label>Nombre:</label>
 							<input
 								type="input"
 								className="form-control"
-								value={names}
-								onChange={event => setNames(event.target.value)}
+								value={name}
+								onChange={event => setName(event.target.value)}
 							/>
 						</div>
 						<div className="form-group">
-							<label htmlFor="inputEmail">Apellido:</label>
+							<label>Apellido:</label>
 							<input
 								type="input"
 								className="form-control"
@@ -34,7 +37,7 @@ export const SignUpAgent = () => {
 							/>
 						</div>
 						<div className="form-group">
-							<label htmlFor="inputEmail">Telefono:</label>
+							<label>Telefono:</label>
 							<input
 								type="input"
 								className="form-control"
@@ -60,7 +63,24 @@ export const SignUpAgent = () => {
 								onChange={e => setPassword(e.target.value)}
 							/>
 						</div>
-						<button className="btn btn-primary my-4">Sign up</button>
+						<div className="form-group">
+							<label>Descripcion del agente:</label>
+							<input
+								type="input"
+								className="form-control"
+								value={description}
+								onChange={e => setDescription(e.target.value)}
+							/>
+						</div>
+						<button
+							type="button"
+							className="btn btn-primary form-control"
+							onClick={async e => {
+								await actions.sign_up_agent(email, password, name, last_name, phone, description);
+								history.push("/");
+							}}>
+							Registrar
+						</button>
 					</form>
 				</div>
 			</div>
