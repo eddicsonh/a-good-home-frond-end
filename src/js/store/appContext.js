@@ -20,7 +20,7 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
-
+		const [ready, setReady] = useState(false);
 		useEffect(() => {
 			/**
 			 * EDIT THIS!
@@ -31,6 +31,17 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
+			if (localStorage.getItem("token") && localStorage.getItem("token") != "") {
+				console.log("found items on localstorage");
+				state.actions.setToken(localStorage.getItem("token"), localStorage.getItem("user"));
+			}
+
+			if (localStorage.getItem("token_agent") && localStorage.getItem("token_agent") != "") {
+				console.log("found items on localstorage");
+				state.actions.setToken_agent(localStorage.getItem("token_agent"), localStorage.getItem("agent"));
+			}
+
+			setReady(true);
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

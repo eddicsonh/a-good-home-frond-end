@@ -1,7 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
+	const history = useHistory();
+
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<Link to="/">
