@@ -6,9 +6,12 @@ export const Navbar = () => {
 	const history = useHistory();
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-light">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">A GOOD HOME</span>
+				<span className="navbar-brand mb-0 h1">
+					A<span className="red">GOOD</span>
+					HOME
+				</span>
 			</Link>
 			<div className="ml-auto">
 				<div className="btn-group mr-4">
