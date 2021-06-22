@@ -19,19 +19,22 @@ export const Navbar = () => {
 						data-toggle="dropdown"
 						aria-haspopup="true"
 						aria-expanded="false">
-						user
+						Login/Sign-up
 					</button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
 						<a className="dropdown-item" onClick={e => history.push("/login/user")}>
-							log-in
+							Usuario
 						</a>
-						<a className="dropdown-item" onClick={e => history.push("/signup/user")}>
+						<a className="dropdown-item" onClick={e => history.push("/login/agent")}>
+							Agente
+						</a>
+						{/* <a className="dropdown-item" onClick={e => history.push("/signup/user")}>
 							sign-up
-						</a>
+						</a> */}
 					</div>
 				</div>
 
-				<div className="btn-group mr-4">
+				{/* <div className="btn-group mr-4">
 					<button
 						className="btn btn-secondary dropdown-toggle"
 						type="button"
@@ -49,7 +52,7 @@ export const Navbar = () => {
 							sign-up
 						</a>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</nav>
 	);

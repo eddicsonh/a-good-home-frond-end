@@ -46,6 +46,7 @@ export const LoginAgent = () => {
 							Log in
 						</button>
 					</form>
+					<a onClick={e => history.push("/signup/user")}>No tienes cuenta? Registrate!</a>
 				</div>
 			</div>
 		</div>
