@@ -66,6 +66,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				return false;
 			},
+			update_user: async (name, last_name, phone, password) => {
+				let response = await fetch("http://192.168.0.13:3000/user/profie/<user_id>", {
+					method: "PUT",
+					body: JSON.stringify({
+						name,
+						last_name,
+						phone,
+						password
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				});
+			},
 			log_in: async (email, password) => {
 				let response = await fetch("http://192.168.0.13:3000/log-in", {
 					method: "POST",

@@ -43,6 +43,9 @@ export const LoginUser = () => {
 							Log in
 						</button>
 					</form>
+					<a href="#" onClick={e => history.push("/signup/user")}>
+						No tiene cuenta? Registrese aqui!
+					</a>
 				</div>
 			</div>
 		</div>

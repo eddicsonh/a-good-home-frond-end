@@ -19,18 +19,27 @@ export const Navbar = () => {
 						data-toggle="dropdown"
 						aria-haspopup="true"
 						aria-expanded="false">
-						user
+						Log-in/Sign-up
 					</button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
 						<a className="dropdown-item" onClick={e => history.push("/login/user")}>
-							log-in
+							Usuario
 						</a>
-						<a className="dropdown-item" onClick={e => history.push("/signup/user")}>
-							sign-up
+						<a className="dropdown-item" onClick={e => history.push("/login/agent")}>
+							Agente
 						</a>
 					</div>
 				</div>
-
+				<div className="btn mr-4">
+					<button
+						className="btn btn-secondary"
+						type="button"
+						id="profile-button"
+						onClick={e => history.push("/user/profile")}>
+						Profile
+					</button>
+				</div>
+				{/* 
 				<div className="btn-group mr-4">
 					<button
 						className="btn btn-secondary dropdown-toggle"
@@ -42,14 +51,9 @@ export const Navbar = () => {
 						agent
 					</button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenuAgent">
-						<a className="dropdown-item" onClick={e => history.push("/login/agent")}>
-							log-in
-						</a>
-						<a className="dropdown-item" onClick={e => history.push("/signup/agente")}>
-							sign-up
-						</a>
+						
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</nav>
 	);
