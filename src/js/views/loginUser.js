@@ -31,10 +31,10 @@ export const LoginUser = () => {
 						</div>
 						<button
 							className="btn btn-primary my-4"
-							onClick={async e => {
+							onClick={e => {
 								e.preventDefault();
 								e.stopPropagation();
-								let result = await actions.log_in(email, password);
+								let result = actions.log_in(email, password);
 								if (result) {
 									history.push("/demo");
 								} else {

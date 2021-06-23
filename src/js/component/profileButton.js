@@ -8,26 +8,48 @@ export const ProfileButton = () => {
 
 	return (
 		<div className="btn mr-4">
-			<button
-				className="btn btn-secondary"
-				type="button"
-				id="profile-button"
-				onClick={e => history.push("/user/profile")}>
-				Perfil
-			</button>
-			{store.token != "" ? (
+			{store.user.length > 0 ? (
 				<button
+					className="btn btn-secondary"
 					type="button"
-					className="btn btn-primary"
-					onClick={async e => {
-						await actions.log_out();
-						history.push("/");
-					}}>
-					salir
+					id="profile-button"
+					onClick={e => history.push("/user/profile")}>
+					Perfil
 				</button>
+			) : (
+				<button
+					className="btn btn-secondary"
+					type="button"
+					id="profile-button"
+					onClick={e => history.push("/agent/profile")}>
+					Perfil
+				</button>
+			)}
+			{store.token != "" ? (
+				<div className="btn mr-4">
+					<button
+						type="button"
+						className="btn btn-secondary"
+						onClick={async e => {
+							await actions.log_out();
+							history.push("/");
+						}}>
+						Salir
+					</button>
+				</div>
 			) : (
 				<Redirect to="/" />
 			)}
 		</div>
 	);
 };
+
+{
+	/* <button
+	className="btn btn-secondary"
+	type="button"
+	id="profile-button"
+	onClick={e => history.push("/user/profile")}>
+	Perfil
+</button> */
+}
