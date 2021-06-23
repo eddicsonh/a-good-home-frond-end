@@ -1,12 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import { Context } from "../store/appContext";
 export const LoginUser = () => {
 	const history = useHistory();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-
+	const { store, actions } = useContext(Context);
 	return (
 		<div className="container">
 			<div className="row justify-content-center mt-3">
@@ -33,6 +32,8 @@ export const LoginUser = () => {
 						<button
 							className="btn btn-primary my-4"
 							onClick={async e => {
+								e.preventDefault();
+								e.stopPropagation();
 								let result = await actions.log_in(email, password);
 								if (result) {
 									history.push("/demo");

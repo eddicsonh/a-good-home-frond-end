@@ -35,6 +35,12 @@ const injectContext = PassedComponent => {
 				console.log("found items on localstorage");
 				state.actions.setToken(localStorage.getItem("token"), localStorage.getItem("user"));
 			}
+
+			if (localStorage.getItem("token_agent") && localStorage.getItem("token_agent") != "") {
+				console.log("found items on localstorage");
+				state.actions.setToken_agent(localStorage.getItem("token_agent"), localStorage.getItem("agent"));
+			}
+
 			setReady(true);
 		}, []);
 

@@ -2,22 +2,25 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
-
-//demo.js lo utilice como prueba  par probar el login y logout
-
-export const Demo = () => {
-	const { store, actions } = useContext(Context);
+export const ProfileButton = () => {
 	const history = useHistory();
+	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container">
-			<h1>Welcome!</h1>
-			{store.token_agent != "" ? (
+		<div className="btn mr-4">
+			<button
+				className="btn btn-secondary"
+				type="button"
+				id="profile-button"
+				onClick={e => history.push("/user/profile")}>
+				Perfil
+			</button>
+			{store.token != "" ? (
 				<button
 					type="button"
 					className="btn btn-primary"
 					onClick={async e => {
-						await actions.log_out_agent();
+						await actions.log_out();
 						history.push("/");
 					}}>
 					salir
