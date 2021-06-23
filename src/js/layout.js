@@ -10,6 +10,7 @@ import { ProfileAgent } from "./views/profileAgent";
 import { SignUpAgent } from "./views/signUpAgent";
 import { SignUpUser } from "./views/signUpUser";
 import { LoginUser } from "./views/loginUser";
+import { UserProfile } from "./component/userProfile";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -38,6 +39,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login/user">
 							<LoginUser />
+						</Route>
+						<Route exact path="/user/profile">
+							<UserProfile />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

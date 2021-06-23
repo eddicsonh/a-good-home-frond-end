@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { DropDownButton } from "../component/dropDownButton";
+import { ProfileButton } from "../component/profileButton";
+import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const history = useHistory();
-
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<Link to="/">
@@ -13,50 +15,7 @@ export const Navbar = () => {
 					HOME
 				</span>
 			</Link>
-			<div className="ml-auto">
-				<div className="btn-group mr-4">
-					<button
-						className="btn btn-secondary dropdown-toggle"
-						type="button"
-						id="dropdownMenuUser"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
-						Login/Sign-up
-					</button>
-					<div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
-						<a className="dropdown-item" onClick={e => history.push("/login/user")}>
-							Usuario
-						</a>
-						<a className="dropdown-item" onClick={e => history.push("/login/agent")}>
-							Agente
-						</a>
-						{/* <a className="dropdown-item" onClick={e => history.push("/signup/user")}>
-							sign-up
-						</a> */}
-					</div>
-				</div>
-
-				{/* <div className="btn-group mr-4">
-					<button
-						className="btn btn-secondary dropdown-toggle"
-						type="button"
-						id="dropdownMenuAgent"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
-						agent
-					</button>
-					<div className="dropdown-menu" aria-labelledby="dropdownMenuAgent">
-						<a className="dropdown-item" onClick={e => history.push("/login/agent")}>
-							log-in
-						</a>
-						<a className="dropdown-item" onClick={e => history.push("/signup/agente")}>
-							sign-up
-						</a>
-					</div>
-				</div> */}
-			</div>
+			{store.loggedIn ? <ProfileButton /> : <DropDownButton />}
 		</nav>
 	);
 };

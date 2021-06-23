@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			loggedIn: false,
 			token: "",
 			demo: [
 				{
@@ -40,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			sign_up_user: async (email, name, last_name, id_document, phone, password) => {
-				let response = await fetch("http://192.168.0.3:3000/sign-up", {
+				let response = await fetch("http://127.0.0.1:3000/sign-up", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -66,8 +67,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				return false;
 			},
+			update_user: async (name, last_name, phone, password) => {
+				let response = await fetch("http://192.168.0.13:3000/user/profie/<user_id>", {
+					method: "PUT",
+					body: JSON.stringify({
+						name,
+						last_name,
+						phone,
+						password
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				});
+			},
 			log_in: async (email, password) => {
-				let response = await fetch("http://192.168.0.3:3000/log-in", {
+				let response = await fetch("http://127.0.0.1:3000/log-in", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -81,7 +96,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let body = await response.json();
 					setStore({
 						token: body.token,
-						user: body.user
+						user: body.user,
+						loggedIn: true
 					});
 					localStorage.setItem("token", body.token);
 					localStorage.setItem("user", JSON.stringify(body.user));
@@ -92,7 +108,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			log_out: () => {
 				setStore({
 					token: "",
-					user: null
+					user: null,
+					loggedIn: false
 				});
 				localStorage.removeItem("token");
 				localStorage.removeItem("user");
