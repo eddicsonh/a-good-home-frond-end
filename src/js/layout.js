@@ -6,6 +6,7 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { LoginAgent } from "./views/loginAgent";
+import { ProfileAgent } from "./views/profileAgent";
 import { SignUpAgent } from "./views/signUpAgent";
 import { SignUpUser } from "./views/signUpUser";
 import { LoginUser } from "./views/loginUser";
@@ -47,6 +48,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login/agent">
 							<LoginAgent />
+						</Route>
+						<Route exact path="/profile/agent">
+							<ProfileAgent />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
