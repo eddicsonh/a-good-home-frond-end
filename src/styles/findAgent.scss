@@ -1,0 +1,35 @@
+.findAgent-home {
+    background-image:url("../img/agent.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.findAgent-Title{
+    color: white;
+}
+
+.findAgent-input {
+    display: flex;
+    width: 50vw;
+    height: 12vh;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    
+}
+
+.findAgent-button{
+    right: 5px;
+    width: 6.5vw;
+    height: 12vh;
+    margin-top: 5vh;
+    background-color: rgb(221, 0, 0);
+    border: none;
+    text-decoration: none;
+}
+
+.searchText{
+    color: white;
+}

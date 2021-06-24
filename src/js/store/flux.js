@@ -1,9 +1,13 @@
+const URLAPI = "http://127.0.0.1:3000";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: [],
 			loggedIn: false,
 			token: "",
+			endpoint: "http://127.0.0.1:3000/",
+			realStates: [],
+			realStates_status: false,
 			agente: []
 		},
 		actions: {
@@ -11,10 +15,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			searchRealStates: async location => {
+				const store = getStore();
+				const response = await fetch(`${URLAPI}/real_state/seach_rs/${location}`);
+				const realStateObject = await response.json();
+				setStore({
+					realStates: realStateObject.response,
+					realStates_status: true
+				});
 			},
 			changeColor: (index, color) => {
 				//get the store
