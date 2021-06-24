@@ -6,9 +6,11 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { LoginAgent } from "./views/loginAgent";
+import { ProfileAgent } from "./views/profileAgent";
 import { SignUpAgent } from "./views/signUpAgent";
 import { SignUpUser } from "./views/signUpUser";
 import { LoginUser } from "./views/loginUser";
+import { UserProfile } from "./component/userProfile";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -38,11 +40,17 @@ const Layout = () => {
 						<Route exact path="/login/user">
 							<LoginUser />
 						</Route>
+						<Route exact path="/user/profile">
+							<UserProfile />
+						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
 						<Route exact path="/login/agent">
 							<LoginAgent />
+						</Route>
+						<Route exact path="/agent/profile">
+							<ProfileAgent />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />

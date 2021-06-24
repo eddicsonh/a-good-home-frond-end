@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { DropDownButton } from "../component/dropDownButton";
+import { ProfileButton } from "../component/profileButton";
+import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const history = useHistory();
-
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<Link to="/">
@@ -13,11 +15,7 @@ export const Navbar = () => {
 					HOME
 				</span>
 			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Sing up / Register</button>
-				</Link>
-			</div>
+			{store.loggedIn ? <ProfileButton /> : <DropDownButton />}
 		</nav>
 	);
 };

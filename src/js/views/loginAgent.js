@@ -35,8 +35,8 @@ export const LoginAgent = () => {
 						<button
 							type="button"
 							className="btn btn-primary my-4"
-							onClick={async e => {
-								let result = await actions.log_in_agent(email, password);
+							onClick={e => {
+								let result = actions.log_in_agent(email, password);
 								if (result) {
 									history.push("/demo");
 								} else {
@@ -46,6 +46,7 @@ export const LoginAgent = () => {
 							Log in
 						</button>
 					</form>
+					<a onClick={e => history.push("/signup/agente")}>No tienes cuenta? Registrate!</a>
 				</div>
 			</div>
 		</div>
