@@ -75,7 +75,7 @@ export const SignUpUser = () => {
 						<div className="form-group">
 							<label>Contrasena</label>
 							<input
-								type="password"
+								type="input"
 								className="form-control"
 								value={password}
 								onChange={e => setPassword(e.target.value)}
