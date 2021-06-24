@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -77,7 +77,7 @@ export const SignUpAgent = () => {
 							className="btn btn-primary form-control"
 							onClick={async e => {
 								await actions.sign_up_agent(email, password, name, last_name, phone, description);
-								history.push("/");
+								history.push("/agent/profile");
 							}}>
 							Registrar
 						</button>

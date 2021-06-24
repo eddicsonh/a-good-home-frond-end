@@ -1,6 +1,12 @@
 import React from "react";
+import { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import logo from "../../img/logo.png";
 
 export const Search = () => {
+	const { store, actions } = useContext(Context);
+	const [location, setLocation] = useState("");
+
 	return (
 		<div className="container-fluid home-home">
 			<h2 className="text-center pt-5">

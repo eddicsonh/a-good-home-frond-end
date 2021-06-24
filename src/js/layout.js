@@ -50,7 +50,7 @@ const Layout = () => {
 						<Route exact path="/login/agent">
 							<LoginAgent />
 						</Route>
-						<Route exact path="/profile/agent">
+						<Route exact path="/agent/profile">
 							<ProfileAgent />
 						</Route>
 						<Route exact path="/findagent">
