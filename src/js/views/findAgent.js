@@ -1,20 +1,20 @@
 import React from "react";
 
-export const Search = () => {
+export const FindAgent = () => {
 	return (
-		<div className="container-fluid home-home">
-			<h2 className="text-center pt-5">
-				<i className="home-Title">El hogar de tus sueños está a un solo paso</i>
+		<div className="container-fluid findAgent-home">
+			<h2 className="text-center mt-5">
+				<i className="findAgent-Title">Encuentra un agente, encuentra tu hogar</i>
 			</h2>
-			<div className="container-fluid home-input">
+			<div className="container-fluid findAgent-input">
 				<div className="input-group">
 					<input
 						type="text"
-						className="form-control home-input"
+						className="form-control findAgent-input"
 						placeholder="       Agente Inmobiliario, Ciudad o Urbanización"
 					/>
 					<span className="input-group-btn">
-						<button className="btn btn-danger home-button" type="button">
+						<button className="btn btn-danger findAgent-button" type="button">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="50"

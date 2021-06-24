@@ -10,6 +10,7 @@ import { ProfileAgent } from "./views/profileAgent";
 import { SignUpAgent } from "./views/signUpAgent";
 import { SignUpUser } from "./views/signUpUser";
 import { LoginUser } from "./views/loginUser";
+import { FindAgent } from "./views/findAgent";
 import { UserProfile } from "./component/userProfile";
 import injectContext from "./store/appContext";
 
@@ -51,6 +52,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/profile/agent">
 							<ProfileAgent />
+						</Route>
+						<Route exact path="/findagent">
+							<FindAgent />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
