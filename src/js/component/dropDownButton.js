@@ -7,13 +7,13 @@ export const DropDownButton = () => {
 		<div className="ml-auto">
 			<div className="btn-group mr-4">
 				<button
-					className="btn btn-secondary dropdown-toggle"
+					className="btn btn-danger dropdown-toggle"
 					type="button"
 					id="dropdownMenuUser"
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false">
-					Log-in/Sign-up
+					Ingresar | Registrarse
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuUser">
 					<a className="dropdown-item" onClick={e => history.push("/login/user")}>

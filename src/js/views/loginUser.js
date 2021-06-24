@@ -36,7 +36,7 @@ export const LoginUser = () => {
 								e.stopPropagation();
 								let result = actions.log_in(email, password);
 								if (result) {
-									history.push("/demo");
+									history.push("/");
 								} else {
 									alert("credenciales malas...");
 								}
