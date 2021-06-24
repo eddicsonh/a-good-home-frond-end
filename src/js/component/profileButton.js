@@ -12,7 +12,7 @@ export const ProfileButton = () => {
 					className="btn btn-secondary"
 					type="button"
 					id="profile-button"
-					onClick={e => history.push("/user/profile")}>
+					onClick={e => history.push(`/user/profile`)}>
 					Perfil
 				</button>
 			) : (

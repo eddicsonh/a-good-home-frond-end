@@ -59,7 +59,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						id: response.id,
 						email: response.email,
 						name: response.name,
-						last_name: response.last_name
+						last_name: response.last_name,
+						id_document: response.id_document,
+						phone: response.phone,
+						password: response.password
 					});
 					return true;
 				}
