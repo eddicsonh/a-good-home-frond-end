@@ -3,18 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			loggedIn: false,
 			token: "",
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			agente: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -164,7 +153,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let body = await response.json();
 					setStore({
 						token_agent: body.token_agent,
-						agent: body.agent
+						agent: body.agent,
+						loggedIn: true
 					});
 					localStorage.setItem("token_agent", body.token_agent);
 					localStorage.setItem("agent", JSON.stringify(body.agent));
@@ -175,7 +165,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			log_out_agent: () => {
 				setStore({
 					token_agent: "",
-					agent: null
+					agent: null,
+					loggedIn: false
 				});
 				localStorage.removeItem("token_agent");
 				localStorage.removeItem("agent");
@@ -185,6 +176,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					token_agent,
 					agent: JSON.parse(agent)
 				});
+			},
+
+			get_agent: async () => {
+				const store = getStore();
+				const response = await fetch("http://192.168.0.4:3000/agent/<agent_id>");
+				const data = await response.json();
+				setStore({ agente: data.agente });
+				store.agente.id;
+
+				// let response = await fetch("http://192.168.0.4:3000/agent/<agent_id>", {
+				// 	method: "GET",
+				// 	body: JSON.stringify({}),
+				// 	headers: {
+				// 		"Content-type": "application/json"
+				// 	}
+				// });
+				// if (response.ok) {
+				// 	response = await response.json();
+				// 	getStore({
+				// 		email: response.email,
+				// 		name: response.name,
+				// 		last_name: response.last_name,
+				// 		phone: response.phone,
+				// 		description: response.description
+				// 	});
+				// 	return true;
+				// }
+				// return false;
 			}
 		}
 	};

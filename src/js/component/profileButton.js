@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
+
 export const ProfileButton = () => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
@@ -12,7 +13,7 @@ export const ProfileButton = () => {
 				className="btn btn-secondary"
 				type="button"
 				id="profile-button"
-				onClick={e => history.push("/user/profile")}>
+				onClick={e => history.push(store.agente.length == 0 ? "/agent/profile" : "/user/profile")}>
 				Perfil
 			</button>
 			{store.token != "" ? (
