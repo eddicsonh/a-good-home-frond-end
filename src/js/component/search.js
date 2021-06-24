@@ -1,9 +1,14 @@
 import React from "react";
+import { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import logo from "../../img/logo.png";
 
 export const Search = () => {
+	const { store, actions } = useContext(Context);
+	const [location, setLocation] = useState("");
+
 	return (
-		<div className="container-fluid">
+		<div className="container-fluid home">
 			<img src={logo} className="mt-5 logo_tamano" />
 			<h2 className="text-center mt-3">
 				<b>
@@ -15,14 +20,26 @@ export const Search = () => {
 					<div className="input-group-prepend">
 						<div className="form-group">
 							<select className="form-control" id="selectTypeTransaction">
-								<option>Compra</option>
-								<option>Alquiler</option>
+								<option>Comprar</option>
+								<option>Alquilar</option>
 							</select>
 						</div>
 					</div>
-					<input type="text" className="form-control" placeholder="Urbanización o Ciudad" />
+					<input
+						type="text"
+						className="form-control"
+						placeholder="Urbanización o Ciudad"
+						value={location}
+						onChange={e => setLocation(e.target.value)}
+					/>
 					<div>
-						<button className="btn btn-primary" type="button" id="button-addon2">
+						<button
+							className="btn btn-primary"
+							type="button"
+							id="button-addon2"
+							onClick={() => {
+								actions.searchRealStates(location);
+							}}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="50"
