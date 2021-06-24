@@ -118,11 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			sign_up_agent: async (email, password, name, last_name, phone, description) => {
-<<<<<<< HEAD
-				let response = await fetch("http://192.168.0.4:3000/signup/agent", {
-=======
 				let response = await fetch("http://127.0.0.1:3000/signup/agent", {
->>>>>>> 758f4e8634e45e279497df191de26466bafb5736
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -151,11 +147,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return false;
 			},
 			log_in_agent: async (email, password) => {
-<<<<<<< HEAD
-				let response = await fetch("http://192.168.0.4:3000/log-in/agent", {
-=======
 				let response = await fetch("http://127.0.0.1:3000/log-in/agent", {
->>>>>>> 758f4e8634e45e279497df191de26466bafb5736
 					method: "POST",
 					body: JSON.stringify({
 						email,
