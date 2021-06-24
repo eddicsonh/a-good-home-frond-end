@@ -73,13 +73,6 @@ export const UserProfile = () => {
 								</div>
 								<hr />
 								<div className="row">
-									<div className="col-sm-3">
-										<h6 className="mb-0">Address</h6>
-									</div>
-									<div className="col-sm-9 text-secondary">Bay Area, San Francisco, CA</div>
-								</div>
-								<hr />
-								<div className="row">
 									<div className="col-sm-12">
 										<a
 											className="btn btn-info "
@@ -204,9 +197,17 @@ export const UserProfile = () => {
 						<div className="col-md-8">
 							<div className="card h-100">
 								<div className="card-body">
-									<h3 className="d-flex align-items-center mb-3">Contrasena</h3>
+									<h3 className="d-flex align-items-center mb-3">Contraseña</h3>
 									<label className="contrasena-actual">
-										<p className="contrasena-actual">Contrasena actual</p>
+										<p>Contraseña actual</p>
+										<input type="password" />
+									</label>
+									<label className="contrasena-actual">
+										<p>Nueva contraseña</p>
+										<input type="password" />
+									</label>
+									<label className="contrasena-actual">
+										<p>Confirmar nueva contraseña</p>
 										<input type="password" />
 									</label>
 								</div>

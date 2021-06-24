@@ -16,7 +16,7 @@
     background-clip: border-box;
     border: 0 solid rgba(0,0,0,.125);
     border-radius: .25rem;
-    height: 22rem;
+    height: 19rem;
 }
 
 .card-body {
@@ -48,19 +48,12 @@
     box-shadow: none!important;
 }
 input {
-    text-rendering: auto;
-    color: -internal-light-dark(black, white);
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-    -webkit-rtl-ordering: logical;
-    padding: 1px 2px;
-    border-width: 2px;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: -8px;
+    margin-bottom: 16px;
+    width: 660px;
 }
+
