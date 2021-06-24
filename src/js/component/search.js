@@ -8,19 +8,26 @@ export const Search = () => {
 	const [location, setLocation] = useState("");
 
 	return (
-		<div className="container-fluid home-home">
+		<div className="container-fluid home">
 			<h2 className="text-center pt-5">
 				<i className="home-Title">El hogar de tus sueños está a un solo paso</i>
 			</h2>
-			<div className="container-fluid home-input">
+			<div className="container-fluid mt-5">
 				<div className="input-group">
 					<input
 						type="text"
 						className="form-control home-input"
-						placeholder="       Agente Inmobiliario, Ciudad o Urbanización"
+						placeholder="   Agente Inmobiliario, Ciudad o Urbanización"
+						value={location}
+						onChange={e => setLocation(e.target.value)}
 					/>
 					<span className="input-group-btn">
-						<button className="btn btn-danger home-button" type="button">
+						<button
+							className="btn btn-danger home-button"
+							type="button"
+							onClick={() => {
+								actions.searchRealStates(location);
+							}}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="50"
