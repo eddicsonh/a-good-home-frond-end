@@ -41,7 +41,22 @@ export const ProfileButton = () => {
 			) : (
 				<Redirect to="/" />
 			)}
+
+			{store.token_agent != "" ? (
+				<div className="btn mr-4">
+					<button
+						type="button"
+						className="btn btn-secondary"
+						onClick={async e => {
+							await actions.log_out_agent();
+							history.push("/");
+						}}>
+						Salir
+					</button>
+				</div>
+			) : (
+				<Redirect to="/" />
+			)}
 		</div>
 	);
 };
-
