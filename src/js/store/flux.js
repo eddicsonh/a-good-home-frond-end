@@ -128,7 +128,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			sign_up_agent: async (email, password, name, last_name, phone, description) => {
-				let response = await fetch("http://127.0.0.1:3000/signup/agent", {
+				let response = fetch("http://127.0.0.1:3000/signup/agent", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -171,9 +171,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let body = await response.json();
 					setStore({
 						token_agent: body.token_agent,
-						agent: body.agent,
+						agent: [body.agent],
 						loggedIn: true
 					});
+					setStore({ agente: body.agente });
 					localStorage.setItem("token_agent", body.token_agent);
 					localStorage.setItem("agent", JSON.stringify(body.agent));
 					return true;
@@ -202,26 +203,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				setStore({ agente: data.agente });
 				store.agente.id;
-
-				// let response = await fetch("http://192.168.0.4:3000/agent/<agent_id>", {
-				// 	method: "GET",
-				// 	body: JSON.stringify({}),
-				// 	headers: {
-				// 		"Content-type": "application/json"
-				// 	}
-				// });
-				// if (response.ok) {
-				// 	response = await response.json();
-				// 	getStore({
-				// 		email: response.email,
-				// 		name: response.name,
-				// 		last_name: response.last_name,
-				// 		phone: response.phone,
-				// 		description: response.description
-				// 	});
-				// 	return true;
-				// }
-				// return false;
 			}
 		}
 	};
