@@ -13,7 +13,7 @@ export const ProfileButton = () => {
 				className="btn btn-secondary"
 				type="button"
 				id="profile-button"
-				onClick={e => history.push(store.agente.length == 0 ? "/agent/profile" : "/user/profile")}>
+				onClick={e => history.push("/user/profile")}>
 				Perfil
 			</button>
 			{store.token != "" ? (
