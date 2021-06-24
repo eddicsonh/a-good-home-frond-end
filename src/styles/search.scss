@@ -1,0 +1,28 @@
+.home-Title{
+    color: white;
+}
+
+.home-input{
+    display: flex;
+    width: 50vw;
+    height: 12vh;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    font-size: 24px;
+}
+
+.home-button{
+    right: 5px;
+    width: 6.5vw;
+    height: 12vh;
+    margin-top: 5vh;
+    background-color: rgb(221, 0, 0);
+    border: none;
+    text-decoration: none;
+}
+
+.searchText{
+    color: white;
+}

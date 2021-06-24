@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
-
 export const ProfileButton = () => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
-
 	return (
 		<div className="btn mr-4">
 			{store.user.length > 0 ? (
@@ -14,7 +12,7 @@ export const ProfileButton = () => {
 					className="btn btn-secondary"
 					type="button"
 					id="profile-button"
-					onClick={e => history.push("/user/profile")}>
+					onClick={e => history.push(`/user/profile`)}>
 					Perfil
 				</button>
 			) : (

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 export const UserProfile = () => {
+	const { store, actions } = useContext(Context);
+	const user = store.user[0];
+	console.log(user);
 	return (
 		<div className="container">
 			<div className="main-body">
@@ -25,8 +29,9 @@ export const UserProfile = () => {
 										width="150"
 									/>
 									<div className="mt-3">
-										<h4>Joesus</h4>
-										<p className="text-secondary mb-1">Fu</p>
+										<h4>
+											{user.name} {user.last_name}
+										</h4>
 										<p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
 									</div>
 								</div>
@@ -41,28 +46,30 @@ export const UserProfile = () => {
 									<div className="col-sm-3">
 										<h6 className="mb-0">Full Name</h6>
 									</div>
-									<div className="col-sm-9 text-secondary">Kenneth Valdez</div>
+									<div className="col-sm-9 text-secondary">
+										{user.name} {user.last_name}
+									</div>
 								</div>
 								<hr />
 								<div className="row">
 									<div className="col-sm-3">
 										<h6 className="mb-0">Email</h6>
 									</div>
-									<div className="col-sm-9 text-secondary">fip@jukmuh.al</div>
+									<div className="col-sm-9 text-secondary">{user.email}</div>
 								</div>
 								<hr />
 								<div className="row">
 									<div className="col-sm-3">
 										<h6 className="mb-0">Phone</h6>
 									</div>
-									<div className="col-sm-9 text-secondary">(239) 816-9029</div>
+									<div className="col-sm-9 text-secondary">{user.phone}</div>
 								</div>
 								<hr />
 								<div className="row">
 									<div className="col-sm-3">
-										<h6 className="mb-0">Mobile</h6>
+										<h6 className="mb-0">Cedula</h6>
 									</div>
-									<div className="col-sm-9 text-secondary">(320) 380-4539</div>
+									<div className="col-sm-9 text-secondary">{user.id_document}</div>
 								</div>
 								<hr />
 								<div className="row">
