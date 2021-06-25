@@ -7,9 +7,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
 			realStates: [],
 			realStates_status: false,
+			Agent_status: false,
 			agente: [],
 			//agent: [],
-			detailRealStates: []
+			detailRealStates: [],
+			searchAgent: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -31,6 +33,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const realStateObjectById = await response.json();
 				setStore({
 					detailRealStates: realStateObjectById.response
+				});
+			},
+			searchAgents: async locationAgent => {
+				const store = getStore();
+				const response = await fetch(`${URLAPI}/searchall?search=${locationAgent}`);
+				const realAgentObject = await response.json();
+				setStore({
+					searchAgent: realAgentObject.response,
+					Agent_status: true
 				});
 			},
 			changeColor: (index, color) => {

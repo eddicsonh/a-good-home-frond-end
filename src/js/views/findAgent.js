@@ -1,6 +1,11 @@
 import React from "react";
+import { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import { ProfileAgents } from "../component/ProfileAgents";
 
 export const FindAgent = () => {
+	const { store, actions } = useContext(Context);
+	const [locationAgent, setLocationAgent] = useState("");
 	return (
 		<div className="container-fluid findAgent-home">
 			<h2 className="text-center mt-5">
@@ -12,9 +17,16 @@ export const FindAgent = () => {
 						type="text"
 						className="form-control findAgent-input"
 						placeholder="       Agente Inmobiliario, Ciudad o Urbanización"
+						value={locationAgent}
+						onChange={e => setLocationAgent(e.target.value)}
 					/>
 					<span className="input-group-btn">
-						<button className="btn btn-danger findAgent-button" type="button">
+						<button
+							className="btn btn-danger findAgent-button"
+							type="button"
+							onClick={() => {
+								actions.searchAgents(locationAgent);
+							}}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="50"
@@ -28,6 +40,7 @@ export const FindAgent = () => {
 					</span>
 				</div>
 			</div>
+			<div>{store.Agent_status ? <ProfileAgents /> : ""}</div>
 		</div>
 	);
 };
