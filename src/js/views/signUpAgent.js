@@ -12,12 +12,13 @@ export const SignUpAgent = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [description, setDescription] = useState("");
+	const [city, setCity] = useState("");
 
 	return (
-		<div className="container">
+		<div className="container-fluid login-signup">
 			<div className="row justify-content-center mt-3">
 				<div className="col-6 d-flex flex-column justify-content-center">
-					<div className="signup card mt-4">
+					<div className="signup card mt-4 mb-4">
 						<div className="card-body">
 							<div className="p-3">
 								<div className="mb-4">
@@ -47,14 +48,25 @@ export const SignUpAgent = () => {
 											/>
 										</div>
 									</div>
-									<div className="form-group mt-1">
-										<label>Telefono:</label>
-										<input
-											type="input"
-											className="form-control"
-											value={phone}
-											onChange={e => setPhone(e.target.value)}
-										/>
+									<div className="form-row">
+										<div className="col">
+											<label>Telefono:</label>
+											<input
+												type="input"
+												className="form-control"
+												value={phone}
+												onChange={e => setPhone(e.target.value)}
+											/>
+										</div>
+										<div className="col">
+											<label>Locacion:</label>
+											<input
+												type="input"
+												className="form-control"
+												value={city}
+												onChange={e => setCity(e.target.value)}
+											/>
+										</div>
 									</div>
 									<div className="form-row mt-1">
 										<div className="col">
@@ -78,7 +90,7 @@ export const SignUpAgent = () => {
 									</div>
 									<div className="form-group">
 										<label>Descripcion del agente:</label>
-										<input
+										<textarea
 											type="input"
 											className="form-control"
 											value={description}
@@ -87,7 +99,7 @@ export const SignUpAgent = () => {
 									</div>
 									<button
 										type="button"
-										className="btn btn-primary"
+										className="btn btn-danger"
 										onClick={async e => {
 											await actions.sign_up_agent(
 												email,
@@ -95,9 +107,10 @@ export const SignUpAgent = () => {
 												name,
 												last_name,
 												phone,
-												description
+												description,
+												city
 											);
-											history.push("/");
+											history.push("/login/agent");
 										}}>
 										Registrar
 									</button>
@@ -107,10 +120,6 @@ export const SignUpAgent = () => {
 					</div>
 				</div>
 			</div>
-
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
-			</Link>
 		</div>
 	);
 };

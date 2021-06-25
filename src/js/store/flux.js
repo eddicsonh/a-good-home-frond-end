@@ -128,15 +128,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			sign_up_agent: async (email, password, name, last_name, phone, description) => {
+			sign_up_agent: async (email, password, name, last_name, phone, description, city) => {
 				let response = await fetch("http://127.0.0.1:3000/signup/agent", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
+						password,
 						name,
 						last_name,
 						phone,
-						description
+						description,
+						city
 					}),
 					headers: {
 						"Content-type": "application/json"
@@ -150,7 +152,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						name: response.name,
 						last_name: response.last_name,
 						phone: response.phone,
-						description: response.description
+						description: response.description,
+						city: response.city
 					});
 					return true;
 				}
