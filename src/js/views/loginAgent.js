@@ -50,7 +50,7 @@ export const LoginAgent = () => {
 											e.stopPropagation();
 											let result = actions.log_in_agent(email, password);
 											if (result) {
-												history.push("/demo");
+												history.push("/");
 											} else {
 												alert("credenciales malas...");
 											}

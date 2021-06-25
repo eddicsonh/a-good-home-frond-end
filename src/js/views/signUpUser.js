@@ -97,7 +97,7 @@ export const SignUpUser = () => {
 												phone,
 												password
 											);
-											history.push("/");
+											history.push("/login/user");
 										}}>
 										Save
 									</button>

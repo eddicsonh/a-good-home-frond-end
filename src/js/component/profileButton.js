@@ -44,7 +44,7 @@ export const ProfileButton = () => {
 						type="button"
 						className="btn btn-danger"
 						onClick={async e => {
-							await actions.log_out_agent();
+							actions.log_out_agent();
 							history.push("/");
 						}}>
 						Salir
