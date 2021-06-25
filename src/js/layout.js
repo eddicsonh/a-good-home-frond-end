@@ -59,6 +59,9 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
+						<Route exact path="/inmueble/detail">
+							<Demo />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

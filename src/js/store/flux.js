@@ -5,7 +5,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: [],
 			loggedIn: false,
 			token: "",
-			endpoint: "http://127.0.0.1:3000/",
 			realStates: [],
 			realStates_status: false,
 			agent: []
@@ -17,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			searchRealStates: async location => {
 				const store = getStore();
-				const response = await fetch(`${URLAPI}/real_state/seach_rs/${location}`);
+				const response = await fetch(`${URLAPI}/real_state/search_rs/${location}`);
 				const realStateObject = await response.json();
 				setStore({
 					realStates: realStateObject.response,
