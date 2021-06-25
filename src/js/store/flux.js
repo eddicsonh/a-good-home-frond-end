@@ -67,8 +67,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				return false;
 			},
-			update_user: async (name, last_name, phone, password) => {
-				let response = await fetch("http://192.168.0.13:3000/user/profie/<user_id>", {
+			update_user: async (id, name, last_name, phone, password) => {
+				let response = await fetch(`http://127.0.0.1:3000/user/profie/${id}`, {
 					method: "PUT",
 					body: JSON.stringify({
 						name,

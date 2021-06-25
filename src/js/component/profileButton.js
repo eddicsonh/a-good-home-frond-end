@@ -32,17 +32,13 @@ export const ProfileButton = () => {
 						type="button"
 						className="btn btn-secondary"
 						onClick={async e => {
-							await actions.log_out();
+							actions.log_out();
 							history.push("/");
 						}}>
 						Salir
 					</button>
 				</div>
 			) : (
-				<Redirect to="/" />
-			)}
-
-			{store.token_agent != "" ? (
 				<div className="btn mr-4">
 					<button
 						type="button"
@@ -54,8 +50,6 @@ export const ProfileButton = () => {
 						Salir
 					</button>
 				</div>
-			) : (
-				<Redirect to="/" />
 			)}
 		</div>
 	);

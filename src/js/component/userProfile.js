@@ -6,6 +6,10 @@ export const UserProfile = () => {
 	const { store, actions } = useContext(Context);
 	const user = store.user[0];
 	console.log(user);
+	if (store.user.lenght < 0) {
+		user = store.user[0];
+	} else {
+	}
 	return (
 		<div className="container">
 			<div className="main-body">
