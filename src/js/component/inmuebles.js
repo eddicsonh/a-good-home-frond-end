@@ -40,7 +40,11 @@ export const Inmuebles = () => {
 											className="btn btn-danger"
 											type="button"
 											id="detailRs-button"
-											onClick={e => history.push("/inmueble/detail")}>
+											onClick={e => {
+												e.preventDefault();
+												e.stopPropagation();
+												history.push(`/inmueble/detail/${item.id}`);
+											}}>
 											Ver detalle
 										</button>
 									</div>
