@@ -7,7 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
 			realStates: [],
 			realStates_status: false,
-			agente: []
+			agente: [],
+			//agent: [],
+			detailRealStates: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -21,6 +23,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					realStates: realStateObject.response,
 					realStates_status: true
+				});
+			},
+			getRealStateById: async idRs => {
+				const store = getStore();
+				const response = await fetch(`${URLAPI}/real_state/search/${idRs}`);
+				const realStateObjectById = await response.json();
+				setStore({
+					detailRealStates: realStateObjectById.response
 				});
 			},
 			changeColor: (index, color) => {
@@ -127,8 +137,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					user: JSON.parse(user)
 				});
 			},
-			sign_up_agent: async (email, password, name, last_name, phone, description) => {
-				let response = fetch("http://127.0.0.1:3000/signup/agent", {
+
+			sign_up_agent: async (email, password, name, last_name, phone, description, city) => {
+				let response = await fetch("http://127.0.0.1:3000/signup/agent", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -136,21 +147,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						name,
 						last_name,
 						phone,
-						description
+						description,
+						city
 					}),
 					headers: {
-						"Content-Type": "application/json"
+						"Content-type": "application/json"
 					}
 				});
-
 				if (response.ok) {
 					response = await response.json();
 					setStore({
+						id: response.id,
 						email: response.email,
 						name: response.name,
 						last_name: response.last_name,
 						phone: response.phone,
-						description: response.description
+						description: response.description,
+						city: response.city
 					});
 					return true;
 				}
@@ -174,7 +187,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						agent: [body.agent],
 						loggedIn: true
 					});
-					setStore({ agente: body.agente });
+
 					localStorage.setItem("token_agent", body.token_agent);
 					localStorage.setItem("agent", JSON.stringify(body.agent));
 					return true;
@@ -199,10 +212,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			get_agent: async () => {
 				const store = getStore();
-				const response = await fetch("http://192.168.0.4:3000/agent/<agent_id>");
+				const response = await fetch("http://127.0.0.1:3000/agent/<agent_id>");
 				const data = await response.json();
-				setStore({ agente: data.agente });
-				store.agente.id;
+				setStore({ agent: data.agent });
+				store.agent.id;
 			}
 		}
 	};

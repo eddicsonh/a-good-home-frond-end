@@ -11,7 +11,7 @@ export const ProfileButton = () => {
 		<div className="btn mr-4">
 			{store.user.length > 0 ? (
 				<button
-					className="btn btn-secondary"
+					className="btn btn-danger"
 					type="button"
 					id="profile-button"
 					onClick={e => history.push("/user/profile")}>
@@ -19,7 +19,7 @@ export const ProfileButton = () => {
 				</button>
 			) : (
 				<button
-					className="btn btn-secondary"
+					className="btn btn-danger"
 					type="button"
 					id="profile-button"
 					onClick={e => history.push("/agent/profile")}>
@@ -30,7 +30,7 @@ export const ProfileButton = () => {
 				<div className="btn mr-4">
 					<button
 						type="button"
-						className="btn btn-secondary"
+						className="btn btn-danger"
 						onClick={async e => {
 							actions.log_out();
 							history.push("/");
@@ -42,7 +42,7 @@ export const ProfileButton = () => {
 				<div className="btn mr-4">
 					<button
 						type="button"
-						className="btn btn-secondary"
+						className="btn btn-danger"
 						onClick={async e => {
 							await actions.log_out_agent();
 							history.push("/");

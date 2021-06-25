@@ -1,28 +1,27 @@
-import { data } from "jquery";
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const ProfileAgent = () => {
 	const { store, actions } = useContext(Context);
-	// useEffect(
-	// 	() => {
-	// 		actions.get_user(store.agente);
-	// 	},
-	// 	[store.agente]
-	// );
+	const agent = store.agent[0];
+	console.log(agent);
 	return (
 		<div className="container">
 			<div className="main-body">
+				<h1>
+					<span>
+						P<span className="red">er</span>
+						fil
+					</span>
+				</h1>
+				<hr />
 				<div className="row px-sm">
 					<div className="col-md-4 mb-3">
 						<div className="card">
 							<div className="card-body">
 								<div className="d-flex flex-column align-items-center text-center">
 									<img
-										src={
-											"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
-										}
+										src={"https://i.pinimg.com/564x/c0/fc/f1/c0fcf164efd9a75a5f7d8065d4365451.jpg"}
 										alt="Admin"
 										className="rounded-circle"
 										height="150"
@@ -30,11 +29,11 @@ export const ProfileAgent = () => {
 									/>
 									<div className="mt-3">
 										<h4>
-											{store.agente.name} {store.agente.last_name}
+											{agent.name} {agent.last_name}
 										</h4>
 										<h4 />
-										<p className="text-secondary mb-1">location</p>
-										<p className="text-muted font-size-sm">{store.agente.description}</p>
+										<p className="text-secondary mb-1">{agent.city}</p>
+										<p className="text-muted font-size-sm">{agent.description}</p>
 									</div>
 								</div>
 							</div>
@@ -59,7 +58,10 @@ export const ProfileAgent = () => {
 											<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
 										</svg>
 									</h6>
-									<a>@</a>
+									<a className="text-secondary">
+										@{agent.name}
+										{agent.last_name}
+									</a>
 								</li>
 								<li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<h6 className="mb-0">
@@ -77,7 +79,9 @@ export const ProfileAgent = () => {
 											<path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
 										</svg>
 									</h6>
-									<a>@</a>
+									<a className="text-secondary">
+										@{agent.name}_{agent.last_name}
+									</a>
 								</li>
 								<li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<h6 className="mb-0">
@@ -95,8 +99,11 @@ export const ProfileAgent = () => {
 											<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
 										</svg>
 									</h6>
-									<a>@</a>
+									<a className="text-secondary">
+										@{agent.name} {agent.last_name}
+									</a>
 								</li>
+								<hr />
 							</ul>
 						</div>
 					</div>
@@ -107,9 +114,9 @@ export const ProfileAgent = () => {
 									<div className="col-sm-3">
 										<h6>Nombre:</h6>
 									</div>
-									<div className="col-sm-9">
+									<div className="col-sm-9 text-secondary">
 										<p>
-											{store.agente.name} {store.agente.last_name}
+											{agent.name} {agent.last_name}
 										</p>
 									</div>
 								</div>
@@ -118,8 +125,8 @@ export const ProfileAgent = () => {
 									<div className="col-sm-3">
 										<h6>Email:</h6>
 									</div>
-									<div className="col-sm-9">
-										<p>{store.agente.email}</p>
+									<div className="col-sm-9 text-secondary">
+										<p>{agent.email}</p>
 									</div>
 								</div>
 								<hr />
@@ -127,18 +134,19 @@ export const ProfileAgent = () => {
 									<div className="col-sm-3">
 										<h6>Phone:</h6>
 									</div>
-									<div className="col-sm-9">
-										<p>{store.agente.phone}</p>
+									<div className="col-sm-9 text-secondary">
+										<p>{agent.phone}</p>
 									</div>
 								</div>
 								<hr />
-								<button>editar</button>
+								<a className="btn btn-danger" target="__blank">
+									Edit
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			);
 		</div>
 	);
 };

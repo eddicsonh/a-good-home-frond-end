@@ -1,4 +1,9 @@
-
+.login-signup{
+    background-image:url("../img/agentOffice3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
 .login.card{
     height: 32rem;
     box-shadow: grey;
@@ -9,7 +14,7 @@
 }
 
 .text-theme {
-    color: #5369f8 !important;
+    color:red!important;
 }
 
 .btn-theme {
