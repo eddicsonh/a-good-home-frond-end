@@ -85,7 +85,7 @@ export const SignUpUser = () => {
 
 									<button
 										type="button"
-										className="btn btn-primary form-control"
+										className="btn btn-danger form-control"
 										onClick={async e => {
 											e.preventDefault();
 											e.stopPropagation();
@@ -109,7 +109,7 @@ export const SignUpUser = () => {
 			</div>
 
 			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
+				<button className="btn btn-danger">Back home</button>
 			</Link>
 		</div>
 	);
