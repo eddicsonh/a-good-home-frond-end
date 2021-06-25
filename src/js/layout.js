@@ -11,6 +11,7 @@ import { SignUpAgent } from "./views/signUpAgent";
 import { SignUpUser } from "./views/signUpUser";
 import { LoginUser } from "./views/loginUser";
 import { FindAgent } from "./views/findAgent";
+import { DetailInmueble } from "./views/detailInmueble";
 import { UserProfile } from "./component/userProfile";
 import injectContext from "./store/appContext";
 
@@ -59,9 +60,7 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route exact path="/inmueble/detail">
-							<Demo />
-						</Route>
+						<Route exact path="/inmueble/detail/:rsId" component={DetailInmueble} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

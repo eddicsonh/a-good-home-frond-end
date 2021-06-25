@@ -7,7 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
 			realStates: [],
 			realStates_status: false,
-			agent: []
+			agente: [],
+			//agent: [],
+			detailRealStates: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -21,6 +23,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					realStates: realStateObject.response,
 					realStates_status: true
+				});
+			},
+			getRealStateById: async idRs => {
+				const store = getStore();
+				const response = await fetch(`${URLAPI}/real_state/search/${idRs}`);
+				const realStateObjectById = await response.json();
+				setStore({
+					detailRealStates: realStateObjectById.response
 				});
 			},
 			changeColor: (index, color) => {
