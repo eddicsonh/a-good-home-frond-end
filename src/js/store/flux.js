@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			endpoint: "http://127.0.0.1:3000/",
 			realStates: [],
 			realStates_status: false,
-			agente: []
+			agent: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -128,25 +128,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					user: JSON.parse(user)
 				});
 			},
+
 			sign_up_agent: async (email, password, name, last_name, phone, description) => {
-				let response = fetch("http://127.0.0.1:3000/signup/agent", {
+				let response = await fetch("http://127.0.0.1:3000/signup/agent", {
 					method: "POST",
 					body: JSON.stringify({
 						email,
-						password,
 						name,
 						last_name,
 						phone,
 						description
 					}),
 					headers: {
-						"Content-Type": "application/json"
+						"Content-type": "application/json"
 					}
 				});
-
 				if (response.ok) {
 					response = await response.json();
 					setStore({
+						id: response.id,
 						email: response.email,
 						name: response.name,
 						last_name: response.last_name,
@@ -175,7 +175,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						agent: [body.agent],
 						loggedIn: true
 					});
-					setStore({ agente: body.agente });
+
 					localStorage.setItem("token_agent", body.token_agent);
 					localStorage.setItem("agent", JSON.stringify(body.agent));
 					return true;
@@ -200,10 +200,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			get_agent: async () => {
 				const store = getStore();
-				const response = await fetch("http://192.168.0.4:3000/agent/<agent_id>");
+				const response = await fetch("http://127.0.0.1:3000/agent/<agent_id>");
 				const data = await response.json();
-				setStore({ agente: data.agente });
-				store.agente.id;
+				setStore({ agent: data.agent });
+				store.agent.id;
 			}
 		}
 	};

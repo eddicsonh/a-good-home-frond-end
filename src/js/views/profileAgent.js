@@ -1,16 +1,10 @@
-import { data } from "jquery";
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const ProfileAgent = () => {
 	const { store, actions } = useContext(Context);
-	// useEffect(
-	// 	() => {
-	// 		actions.get_user(store.agente);
-	// 	},
-	// 	[store.agente]
-	// );
+	const agent = store.agent[0];
+	console.log(agent);
 	return (
 		<div className="container">
 			<div className="main-body">
@@ -30,11 +24,11 @@ export const ProfileAgent = () => {
 									/>
 									<div className="mt-3">
 										<h4>
-											{store.agente.name} {store.agente.last_name}
+											{agent.name} {agent.last_name}
 										</h4>
 										<h4 />
 										<p className="text-secondary mb-1">location</p>
-										<p className="text-muted font-size-sm">{store.agente.description}</p>
+										<p className="text-muted font-size-sm">{agent.description}</p>
 									</div>
 								</div>
 							</div>
@@ -109,7 +103,7 @@ export const ProfileAgent = () => {
 									</div>
 									<div className="col-sm-9">
 										<p>
-											{store.agente.name} {store.agente.last_name}
+											{agent.name} {agent.last_name}
 										</p>
 									</div>
 								</div>
@@ -119,7 +113,7 @@ export const ProfileAgent = () => {
 										<h6>Email:</h6>
 									</div>
 									<div className="col-sm-9">
-										<p>{store.agente.email}</p>
+										<p>{agent.email}</p>
 									</div>
 								</div>
 								<hr />
@@ -128,7 +122,7 @@ export const ProfileAgent = () => {
 										<h6>Phone:</h6>
 									</div>
 									<div className="col-sm-9">
-										<p>{store.agente.phone}</p>
+										<p>{agent.phone}</p>
 									</div>
 								</div>
 								<hr />

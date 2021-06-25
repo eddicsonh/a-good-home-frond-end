@@ -97,7 +97,7 @@ export const SignUpAgent = () => {
 												phone,
 												description
 											);
-											history.push("/agent/profile");
+											history.push("/");
 										}}>
 										Registrar
 									</button>
