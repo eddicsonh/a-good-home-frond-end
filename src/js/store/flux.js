@@ -47,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			sign_up_user: async (email, name, last_name, id_document, phone, password) => {
-				let response = await fetch("http://127.0.0.1:3000/sign-up", {
+				let response = await fetch(`${URLAPI}/sign-up`, {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -77,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return false;
 			},
 			update_user: async (name, last_name, phone, password) => {
-				let response = await fetch("http://192.168.0.13:3000/user/profie/<user_id>", {
+				let response = await fetch( `${URLAPI}user/profie/<user_id>`, {
 					method: "PUT",
 					body: JSON.stringify({
 						name,
@@ -92,13 +92,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			get_user: async () => {
 				const store = getStore();
-				const response = await fetch("http://127.0.0.1:3000/user/</user_id>");
+				const response = await fetch(`${URLAPI}/user/</user_id>`);
 				const data = await response.json();
 				setStore({ user: data.user });
 				store.user.id;
 			},
 			log_in: async (email, password) => {
-				let response = await fetch("http://127.0.0.1:3000/log-in", {
+				let response = await fetch(`${URLAPI}/log-in`, {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -137,7 +137,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			sign_up_agent: async (email, password, name, last_name, phone, description) => {
-				let response = fetch("http://127.0.0.1:3000/signup/agent", {
+				let response = fetch(`${URLAPI}/signup/agent`, {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -166,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return false;
 			},
 			log_in_agent: async (email, password) => {
-				let response = await fetch("http://127.0.0.1:3000/log-in/agent", {
+				let response = await fetch(`${URLAPI}/log-in/agent`, {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -208,7 +208,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			get_agent: async () => {
 				const store = getStore();
-				const response = await fetch("http://192.168.0.4:3000/agent/<agent_id>");
+				const response = await fetch(`${URLAPI}/agent/<agent_id>`);
 				const data = await response.json();
 				setStore({ agente: data.agente });
 				store.agente.id;
