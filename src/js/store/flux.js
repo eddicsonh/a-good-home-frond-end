@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			realStates: [],
 			realStates_status: false,
 			agente: [],
+			//agent: [],
 			detailRealStates: []
 		},
 		actions: {
@@ -76,8 +77,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				return false;
 			},
-			update_user: async (name, last_name, phone, password) => {
-				let response = await fetch( `${URLAPI}user/profie/<user_id>`, {
+			update_user: async (id, name, last_name, phone, password) => {
+				let response = await fetch(`${URLAPI}/user/profie/${id}`, {
 					method: "PUT",
 					body: JSON.stringify({
 						name,
@@ -136,8 +137,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					user: JSON.parse(user)
 				});
 			},
-			sign_up_agent: async (email, password, name, last_name, phone, description) => {
-				let response = fetch(`${URLAPI}/signup/agent`, {
+
+			sign_up_agent: async (email, password, name, last_name, phone, description, city) => {
+				let response = await fetch(`${URLAPI}/signup/agent`, {
 					method: "POST",
 					body: JSON.stringify({
 						email,
@@ -145,21 +147,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						name,
 						last_name,
 						phone,
-						description
+						description,
+						city
 					}),
 					headers: {
-						"Content-Type": "application/json"
+						"Content-type": "application/json"
 					}
 				});
-
 				if (response.ok) {
 					response = await response.json();
 					setStore({
+						id: response.id,
 						email: response.email,
 						name: response.name,
 						last_name: response.last_name,
 						phone: response.phone,
-						description: response.description
+						description: response.description,
+						city: response.city
 					});
 					return true;
 				}
@@ -183,7 +187,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						agent: [body.agent],
 						loggedIn: true
 					});
-					setStore({ agente: body.agente });
+
 					localStorage.setItem("token_agent", body.token_agent);
 					localStorage.setItem("agent", JSON.stringify(body.agent));
 					return true;
@@ -210,8 +214,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				const response = await fetch(`${URLAPI}/agent/<agent_id>`);
 				const data = await response.json();
-				setStore({ agente: data.agente });
-				store.agente.id;
+				setStore({ agent: data.agent });
+				store.agent.id;
 			}
 		}
 	};

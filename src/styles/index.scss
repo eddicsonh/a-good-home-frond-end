@@ -13,6 +13,7 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+
 .home {
     background-image:url("../img/agentOffice3.jpg");
     background-repeat: no-repeat;
@@ -41,4 +42,11 @@ body {
 }
 
 */
+
+.alingRight{
+    color: black;
+    align-items: flex-end;
+    display: flex;
+    justify-content: right;
+}
 

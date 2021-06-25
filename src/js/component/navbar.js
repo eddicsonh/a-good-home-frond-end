@@ -15,7 +15,15 @@ export const Navbar = () => {
 					HOME
 				</span>
 			</Link>
+
 			{store.loggedIn ? <ProfileButton /> : <DropDownButton />}
+			<Link to="/findagent">
+				<div className="d-flex flex-row">
+					<div className="p-2">
+						<span>Encuentra un Agente</span>
+					</div>
+				</div>
+			</Link>
 		</nav>
 	);
 };
